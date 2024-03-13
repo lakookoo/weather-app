@@ -2,19 +2,21 @@ import { Grid, Paper, Typography, ButtonBase, Box } from '@mui/material'
 import React from 'react'
 
 const WeatherCard = ({weatherData}) => {
+  const { main, name, weather } = weatherData || {}
+  console.log("weather", main, name, weather )
   return (
     <Paper
       sx={{
         p: 2,
-        margin: 'auto',
-        maxWidth: 500,
+        margin: 'auto', // Set margin to auto to center horizontally
+        maxWidth: 5000,
         flexGrow: 1,
-        backgroundColor: "white",
+        backgroundColor: 'white',
       }}
     >
       <Grid container spacing={2}>
         <Grid item>
-          <ButtonBase sx={{ width: 128, height: 128 }}>
+          <ButtonBase sx={{ width: '50%', height: 128 }}>
             <Box sx={{m: "auto", display: "block", maxWidth: "100%", maxHeight:"100%"}}/>
           </ButtonBase>
         </Grid>
@@ -22,24 +24,24 @@ const WeatherCard = ({weatherData}) => {
           <Grid item xs container direction="column" spacing={2}>
             <Grid item xs>
               <Typography gutterBottom variant="subtitle1" component="div">
-                Standard license
+                {name}
               </Typography>
               <Typography variant="body2" gutterBottom>
-                Full resolution 1920x1080 • JPEG
+                Temperature
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                ID: 1030114
+                Feels like 
               </Typography>
             </Grid>
             <Grid item>
               <Typography sx={{ cursor: 'pointer' }} variant="body2">
-                Remove
+                Description
               </Typography>
             </Grid>
           </Grid>
           <Grid item>
             <Typography variant="subtitle1" component="div">
-              $19.00
+            The weather is like 
             </Typography>
           </Grid>
         </Grid>
