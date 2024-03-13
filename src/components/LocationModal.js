@@ -8,6 +8,7 @@ const LocationModal = ({ isOpen, onRequestClose, onLocationChange }) => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
+          console.log("latitude, longitude", latitude, longitude)
           onLocationChange({ latitude, longitude });
           onRequestClose();
         },

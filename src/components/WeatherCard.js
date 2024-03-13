@@ -1,7 +1,7 @@
 import { Grid, Paper, Typography, ButtonBase, Box } from '@mui/material'
 import React from 'react'
 
-const WeatherCard = () => {
+const WeatherCard = ({weatherData}) => {
   return (
     <Paper
       sx={{

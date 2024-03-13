@@ -26,7 +26,7 @@ const  App = () => {
       
       <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home locationData={locationData}/>} />
         <Route path="/forecast/:city" element={<Forecast/>} />
         <Route path="*" element={<Error/>}/>
       </Routes>
