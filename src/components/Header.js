@@ -1,12 +1,30 @@
 
 import { CloudOutlined } from '@mui/icons-material';
 import { AppBar, TextField, Toolbar, Typography } from '@mui/material';
-import React from 'react';
+import React, { useState} from 'react';
+import axios from 'axios';
 
 
 
 const Header = (props) => {
-  const {onChange, value} = props;
+  const [query, setQuery] = useState('');
+  const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
+  
+  const handleKeyPress = async (event) => {
+    if (event.key === 'Enter'){
+
+    try {
+      const locQuery = event.target.value;
+      console.log('loc query', locQuery);
+      const lonAndLat = await axios.get(
+        `http://api.openweathermap.org/geo/1.0/direct?q=${locQuery}&appid=${apiKey}`
+      );
+      const { lat, lon} = lonAndLat.data[0];
+      console.log('longitude and latitude', lat, lon)
+    } catch(error) {
+      console.error('Error fetching data:', error);
+    }
+  }}
   return (
     <AppBar position="sticky">
       <Toolbar>
@@ -18,8 +36,9 @@ const Header = (props) => {
           label="Search"
           variant="standard"
           type="search"
-          value={value}
-          onChange={onChange}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyPress={handleKeyPress}
           sx={{
             backgroundColor: 'white',
             color: 'black',

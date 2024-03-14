@@ -8,7 +8,7 @@ const WeatherCard = ({weatherData}) => {
     <Paper
       sx={{
         p: 2,
-        margin: 'auto', // Set margin to auto to center horizontally
+        margin: 'auto', 
         maxWidth: 5000,
         flexGrow: 1,
         backgroundColor: 'white',
